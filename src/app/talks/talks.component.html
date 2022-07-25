@@ -1,0 +1,49 @@
+
+<!--interpolacion-->
+<h1>{{talkTitle}}</h1>
+
+
+<!--esta manera es mediante la que se llama a los metodos para dar valor a propiedades-->
+<h1 [textContent]="talkTitle" [style.color]="getColor()"></h1>
+
+<!--Alternativas que coge estilo de metodo que devuelve objeto con propiedades-->
+
+<h1 [ngStyle]="getStyleObject()">{{talkTitle}}</h1>
+
+
+<h1 [ngStyle]="{'color':getColor()}" >{{talkTitle}}</h1>
+
+
+<!--ejemplo de event biding-->
+<h1 (click)="onClickMethod($event)">Ejemplo de event Biding</h1>
+
+<input type="text" (keyup)="onKeyUpMethod($event)" id="name" name="name">
+
+<!--iterando sobre un array-->
+<h2 *ngFor="let subtitle of talkVariousSubtitles">{{subtitle}}</h2>
+
+<table>
+    <tr>
+        <td *ngFor="let subtitle of talkVariousSubtitles; let i = index">
+           {{i}} - {{subtitle}}
+        </td>
+</table>
+
+<!--ejemplo ngIf-->
+<h2 *ngIf="random%2==0">
+    El numero random de la clase es par
+</h2>
+
+            <!--ejemplo de componente dentro de otro componente-->
+
+<!--selector de clase hijo-->                           <!--priopiedad clase hijo-->
+<app-talk *ngFor="let uniqueTalk of talkVariousSubtitles"[talk]="uniqueTalk "></app-talk>
+
+<!--Ejemplo de utilización de @output en clase padre-->
+<h4>Escribe aqui para añadir una charla</h4>
+<app-talk (talkReview)="addItem($event)"></app-talk>
+
+<h4>Lista de reseñas</h4>
+<ul>
+  <li *ngFor="let review of talkVariousSubtitles">{{review}}</li>
+</ul>

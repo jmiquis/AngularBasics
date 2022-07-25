@@ -1,0 +1,18 @@
+<p>{{talk}} clase hijo</p>
+
+<!--ejemplo de modificacion de formato con pipe-->
+<p>{{fecha|date:'HH:mm:ss'}}</p>
+<!--ejemplo de pipe con objeto json-->
+<p>{{jsonObject|json}}</p>
+
+
+<!--Cada vez que pulsamos el boton estamos usando el método addNewTalkReview para pasarle el valor del input y meterlo en la clase padre-->
+
+
+                                    <!--esta sintaxis crea una variable de template-->
+
+<form>
+<input type="text" #nuevaReview>
+                                                <!--Utilizamos el value de la variable creada arriba-->
+<button type="button" (click)="addNewTalk(nuevaReview.value)">Add to parent's list</button>
+</form>
